@@ -41,7 +41,7 @@ class CustomPageView extends GetView<PageviewControllerImp> {
               ),
               Text(
                 onboardinglist[i].body,
-                style: const TextStyle(color: AppColors.grey, fontSize: 30),
+                style: Theme.of(context).textTheme.displayLarge,
               ),
             ],
           );
