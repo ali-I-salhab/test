@@ -19,15 +19,10 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(),
-          drawer: Drawer(),
           body: Center(
-              child: StreamBuilder<Object>(
-                  stream: null,
-                  builder: (context, snapshot) {
-                    return Container(
-                      color: Colors.red,
-                    );
-                  })),
+              child: Container(
+            color: Colors.green,
+          )),
         ),
       ),
     );
