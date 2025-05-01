@@ -1,0 +1,18 @@
+default_platform(:android)
+
+platform :android do
+  desc "Build and distribute the app to Firebase"
+  lane :release do
+    gradle(
+      task: "assembleRelease",
+      flavor: "prod"  # or your app's flavor
+    )
+
+    firebase_app_distribution(
+      app: "YOUR_FIREBASE_APP_ID",
+      testers: "alisalhab258r@gmail.com",  # Email addresses of the testers
+        # Firebase distribution group (optional)
+      release_notes: "Release notes for this version"
+    )
+  end
+end

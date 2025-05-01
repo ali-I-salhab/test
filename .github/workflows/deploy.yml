@@ -1,0 +1,49 @@
+name: Deploy to Firebase on Production Push
+
+on:
+  push:
+    branches:
+      - production  # This triggers the workflow only on the production branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+
+    - name: Cache Flutter dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.pub-cache
+        key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pub-
+
+    - name: Install Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: 'stable'
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Build APK
+      run: flutter build apk --release
+
+    - name: Set up Firebase CLI
+      run: |
+        curl -sL https://firebase.tools | bash
+        firebase --version
+
+    - name: Set up Firebase Token
+      run: echo "FIREBASE_TOKEN=${{ secrets.FIREBASE_TOKEN }}" >> $GITHUB_ENV
+
+    - name: Deploy to Firebase App Distribution
+      run: fastlane android release
