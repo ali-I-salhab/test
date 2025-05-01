@@ -47,3 +47,4 @@ jobs:
 
     - name: Deploy to Firebase App Distribution
       run: fastlane android release
+

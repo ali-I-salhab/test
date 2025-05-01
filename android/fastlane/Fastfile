@@ -9,7 +9,7 @@ platform :android do
     )
 
     firebase_app_distribution(
-      app: "YOUR_FIREBASE_APP_ID",
+      app: "1:82631420807:android:1f42682e8be49c2e24c122",
       testers: "alisalhab258r@gmail.com",  # Email addresses of the testers
         # Firebase distribution group (optional)
       release_notes: "Release notes for this version"
