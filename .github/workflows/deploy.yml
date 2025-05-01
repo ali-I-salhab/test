@@ -34,6 +34,6 @@ jobs:
 
       - name: Distribute to Firebase
         working-directory: android
-        run: deploy
+        run: fastlane deploy
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
