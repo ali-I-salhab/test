@@ -1,18 +1,21 @@
+
 default_platform(:android)
 
 platform :android do
-  desc "Build and distribute the app to Firebase"
-  lane :release do
+  desc "Build and distribute release to Firebase"
+  lane :deploy do
     gradle(
-      task: "assembleRelease",
-      flavor: "prod"  # or your app's flavor
+      task: "assemble",
+      build_type: "Release"
     )
 
     firebase_app_distribution(
-      app: "1:82631420807:android:1f42682e8be49c2e24c122",
-      testers: "alisalhab258r@gmail.com",  # Email addresses of the testers
-        # Firebase distribution group (optional)
-      release_notes: "Release notes for this version"
+      app: "1:82631420807:android:1f42682e8be49c2e24c122", # <-- Replace with your real Firebase App ID
+      firebase_cli_token: ENV["FIREBASE_TOKEN"],
+      release_notes: "CI/CD Deploy via GitHub Actions 🚀",
+      # groups: "testers", # Or use emails: "user@example.com"
+       emails: "alisalhab258@gmail.com"
+      android_artifact_path: "app/build/outputs/apk/release/app-release.apk"
     )
   end
 end
