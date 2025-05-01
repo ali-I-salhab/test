@@ -7,7 +7,7 @@ platform :android do
       app: "1:82631420807:android:1f42682e8be49c2e24c122",
       firebase_cli_token: ENV["FIREBASE_TOKEN"],
       testers: "alisalhab258@gmail.com",
-      android_artifact_path: "C:/Users/ali--/Desktop/flutter/test/build/app/outputs/flutter-apk/app-release.apk",
+      android_artifact_path: "build/app/outputs/flutter-apk/app-release.apk",
       release_notes: "Deployed via Fastlane",
       upload_timeout: 600
     )
