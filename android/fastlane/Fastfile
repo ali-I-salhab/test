@@ -13,8 +13,8 @@ platform :android do
       app: "1:82631420807:android:1f42682e8be49c2e24c122", # <-- Replace with your real Firebase App ID
       firebase_cli_token: ENV["FIREBASE_TOKEN"],
       release_notes: "CI/CD Deploy via GitHub Actions 🚀",
-      # groups: "testers", # Or use emails: "user@example.com"
-       emails: "alisalhab258@gmail.com"
+     
+      emails: "alisalhab258@gmail.com",
       android_artifact_path: "app/build/outputs/apk/release/app-release.apk"
     )
   end
