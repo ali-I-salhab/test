@@ -1,21 +1,14 @@
-
-default_platform(:android)
-
 platform :android do
-  desc "Build and distribute release to Firebase"
+  desc "Deploy release APK to Firebase"
   lane :deploy do
-    gradle(
-      task: "assemble",
-      build_type: "Release"
-    )
+    gradle(task: 'assembleRelease')
 
     firebase_app_distribution(
-      app: "1:82631420807:android:1f42682e8be49c2e24c122", # <-- Replace with your real Firebase App ID
+      app: "1:82631420807:android:1f42682e8be49c2e24c122",
       firebase_cli_token: ENV["FIREBASE_TOKEN"],
-      release_notes: "CI/CD Deploy via GitHub Actions 🚀",
-     
-      emails: "alisalhab258@gmail.com",
-      android_artifact_path: "app/build/outputs/apk/release/app-release.apk"
+      testers: "alisalhab258@gmail.com",
+      android_artifact_path: "C:/Users/ali--/Desktop/flutter/test/build/app/outputs/flutter-apk/app-release.apk",
+      release_notes: "Deployed via Fastlane"
     )
   end
 end
